@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.traffic.ldms.request.RequestMapper">
+	<insert id="insert"
+		parameterType="org.traffic.ldms.request.Request">
+		INSERT INTO REQUEST
+		VALUES (Request_sequence.NEXTVAL, #{vehicleNo},#{id})
+	</insert>
+</mapper>

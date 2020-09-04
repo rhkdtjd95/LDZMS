@@ -1,0 +1,33 @@
+/*
+************************************************
+
+STYLESHEET: Cofiguration
+
+************************************************
+*/
+
+@import url('/css/main_menu.css');
+@import url('/css/formee-structure.css');
+@import url('/css/formee-style.css');
+@import url('/css/default_buttons.css');
+@import url('/css/chosen.css');
+@import url('/css/uniform.default.css');
+@import url('/css/generic_icons.css');
+
+@import url('/css/style.css');
+@import url('/css/jquery.thumbnailScroller.css');
+
+@import url('/plugins/lightbox/js/lightbox/themes/default/jquery.lightbox.css');
+@import url('/plugins/jqueryui/all/themes/base/jquery.ui.all.css');
+@import url('/plugins/validator/css/validationEngine.jquery.css');
+@import url('/plugins/dialogs/jquery-fallr-1.0.css');
+@import url('/plugins/colorpicker/css/colorpicker.css');
+@import url('/plugins/qtip/jquery.qtip.css');
+@import url('/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css');
+@import url('/plugins/datatables/media/css/data_table.css');
+@import url('/plugins/multiselect/css/ui.multiselect.css');
+@import url('/plugins/fileexplorer/css/elfinder.css');
+@import url('/plugins/alerts/resources/css/jquery.toastmessage.css');
+@import url('/plugins/prettify/prettify.css');
+@import url('/plugins/fullcalendar/fullcalendar.css');
+@import url('/plugins/fullcalendar/fullcalendar.print.css'), print;

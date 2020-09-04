@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.traffic.ldms.account.AccountMapper">
+	<select id="select" parameterType="org.traffic.ldms.account.Account" resultType="org.traffic.ldms.account.Account">
+		SELECT 
+			 ID
+			,PASSWORD
+		FROM ACCOUNT
+		<where>
+			<if test="id != null and id != ''">
+				AND ID = #{id}
+			</if>
+			<if test="password != null and password != ''">
+				AND PASSWORD = #{password}
+			</if>
+		</where>
+	</select>
+	
+	<select id="checkId" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM ACCOUNT
+			WHERE ID =#{id} AND PASSWORD=#{password}
+	</select> 
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.traffic.ldms.violation.ViolationMapper">
+
+	<insert id="insert"
+		parameterType="org.traffic.ldms.violation.Violation">
+		INSERT INTO VIOLATION
+		VALUES (#{no}, #{model}, #{cc},SYSDATE)
+	</insert>
+
+	<update id="update" parameterType="java.lang.String">
+		UPDATE VIOLATION
+		SET VIOLATION_DATE = SYSDATE
+		WHERE NO= #{no}
+	</update>
+
+	<delete id="deleteBySchedule">
+		DELETE FROM VIOLATION
+    	WHERE VIOLATION_DATE IN (SELECT VIOLATION_DATE FROM VIOLATION WHERE SYSDATE - VIOLATION_DATE > 1825)
+	</delete> 
+		
+	<select id = "select" parameterType="java.lang.String"  resultType ="int">
+	SELECT count(*)			
+	FROM VIOLATION
+	WHERE NO= #{no}
+	</select>
+	
+	<select id = "selectViolation" parameterType="String"  resultType ="org.traffic.ldms.violation.Violation">		
+	SELECT NO,MODEL,CC,VIOLATION_DATE FROM VIOLATION
+ 	WHERE NO=#{no}
+	</select>
+	
+</mapper>

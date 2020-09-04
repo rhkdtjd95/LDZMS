@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.traffic.ldms.institution.InstitutionMapper">
+	<select id="selectAll" parameterType="org.traffic.ldms.institution.Institution"
+			resultType="org.traffic.ldms.institution.Institution">
+		SELECT
+			 ID
+			,NAME
+			,PHONE_NUMBER
+			,ADDRESS
+			,ACCESS_KEY
+			,VALIDITY
+		FROM INSTITUTION
+		<where>
+			<if test="name != null and name != ''">
+				AND UPPER(NAME) LIKE ('%' || UPPER(#{name}) || '%')
+			</if>
+		</where>
+	</select>
+
+	<select id="select" parameterType="String"
+			resultType="org.traffic.ldms.institution.Institution">
+		SELECT
+			 ID
+			,NAME
+			,PHONE_NUMBER
+			,ADDRESS
+			,ACCESS_KEY
+			,VALIDITY
+		FROM INSTITUTION
+		WHERE ID = #{id}
+	</select>
+	
+	<update id="update" parameterType="org.traffic.ldms.institution.Institution">
+        UPDATE INSTITUTION
+        <set>
+            <if test="name != null">
+            	NAME = #{name},
+            </if>
+            <if test="phoneNumber != null">
+                 PHONE_NUMBER = #{phoneNumber},
+            </if>
+            <if test="address != null">
+                 ADDRESS = #{address},
+            </if>
+            <if test="accessKey != null">
+                 ACCESS_KEY = #{accessKey},
+            </if>
+            <if test="validity != null">
+                 VALIDITY = SYSDATE + (INTERVAL '1' YEAR),
+            </if>
+        </set>
+        WHERE ID = #{id}
+	</update>
+
+	<insert id="insert" parameterType="org.traffic.ldms.institution.Institution">
+		INSERT INTO INSTITUTION
+		VALUES (#{id}, #{name}, #{phoneNumber}, #{address}, #{accessKey}, SYSDATE + (INTERVAL '1' YEAR))
+	</insert>
+	
+	<select id="check" resultType="org.traffic.ldms.institution.Institution">
+		SELECT ID FROM INSTITUTION
+			WHERE ID =#{id}
+	</select> 
+	
+</mapper>
